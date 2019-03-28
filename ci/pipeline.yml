@@ -1,0 +1,30 @@
+resources:
+  - name: chat-client
+    type: git
+    check_every: 30m
+    source:
+      branch: master
+      uri: ((git-uri-client))
+      private_key: ((publishing-outputs-private-key))
+
+  - name: deploy-web-app
+    type: cf
+    source:
+      api: https://api.run.pivotal.io
+      username: ((cf-login))
+      password: ((cf-password))
+      organization: chat-service
+      space: development
+      skip_cert_check: true
+
+jobs:
+  - name: build
+    public: true
+    plan:
+      - get: chat-client
+        trigger: true
+      - task: Build project
+        file: clientjs/ci/tasks/build.yml
+      - put: deploy-web-app
+        params:
+          manifest: build/manifest.yml

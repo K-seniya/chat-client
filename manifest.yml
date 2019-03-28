@@ -1,5 +1,5 @@
 applications:
-  - name: chat-js
+  - name: chat-client-app
     random-route: true
     memory: 768M
     path: build/

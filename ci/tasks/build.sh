@@ -1,3 +1,5 @@
+#!/bin/sh
+set -e
 cp -R chat-client/* build/
 cd build
 npm install

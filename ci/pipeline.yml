@@ -24,7 +24,7 @@ jobs:
       - get: chat-client
         trigger: true
       - task: Build project
-        file: clientjs/ci/tasks/build.yml
+        file: chat-client/ci/tasks/build.yml
       - put: deploy-web-app
         params:
           manifest: build/manifest.yml

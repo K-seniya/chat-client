@@ -11,4 +11,4 @@ image_resource:
     repository: node
     tag: '10'
 run:
-  path: app/ci/tasks/build.sh
+  path: chat-client/ci/tasks/build.sh
